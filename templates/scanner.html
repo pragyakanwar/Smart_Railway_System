@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Scanner Status</h1>
+
+<div class="cards">
+    <div class="card">
+        <h3>Scanner</h3>
+        <h2 style="color:green;">Online</h2>
+    </div>
+
+    <div class="card">
+        <h3>Camera</h3>
+        <h2>Active</h2>
+    </div>
+
+    <div class="card">
+        <h3>Station</h3>
+        <h2>Bikaner Junction</h2>
+    </div>
+</div>
+
+<div class="table-card">
+    <h3>Scanner Information</h3>
+    <table>
+        <tr>
+            <th>Component</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>QR Scanner</td>
+            <td class="allowed">Running</td>
+        </tr>
+        <tr>
+            <td>Camera Connection</td>
+            <td class="allowed">Connected</td>
+        </tr>
+        <tr>
+            <td>Database</td>
+            <td class="allowed">Connected</td>
+        </tr>
+        <tr>
+            <td>Gate System</td>
+            <td class="allowed">Ready</td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}

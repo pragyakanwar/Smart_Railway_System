@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>🚆 Smart Railway Entry Control Panel</h1>
+
+<!-- Top Cards -->
+<div class="cards">
+
+<div class="card">
+<h3>Total Scans</h3>
+<h2>{{total}}</h2>
+</div>
+
+<div class="card">
+<h3>Allowed</h3>
+<h2>{{allowed}}</h2>
+</div>
+
+<div class="card">
+<h3>Denied</h3>
+<h2>{{denied}}</h2>
+</div>
+
+</div>
+
+
+<!-- Dashboard Grid -->
+<div class="dashboard-grid">
+
+<!-- Recent Entries -->
+<div class="table-card">
+
+<h3>Recent Entries</h3>
+
+<table>
+
+<tr>
+<th>Ticket</th>
+<th>Type</th>
+<th>Status</th>
+<th>Time</th>
+</tr>
+
+{% for log in logs %}
+
+<tr>
+
+<td>{{log[0]}}</td>
+<td>{{log[1]}}</td>
+
+<td>
+{% if log[2]=='allowed' %}
+<span class="allowed">allowed</span>
+{% else %}
+<span class="denied">denied</span>
+{% endif %}
+</td>
+
+<td>{{log[3]}}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+
+<!-- Scan Analytics Chart -->
+<div class="chart-card">
+
+<h3>Scan Analytics</h3>
+
+<canvas id="scanChart"></canvas>
+
+</div>
+
+</div>
+
+
+<!-- Gate Activity -->
+<div class="activity">
+
+<h3>Gate Activity</h3>
+
+<div class="activity-list">
+
+{% for log in activity %}
+
+<div class="activity-item">
+
+<div class="activity-time">
+{{log[3]}}
+</div>
+
+<div class="activity-ticket">
+Ticket <b>{{log[0]}}</b>
+</div>
+
+<div class="activity-status">
+
+{% if log[2]=='allowed' %}
+
+<span class="status allowed-badge">
+🟢 Gate Opened
+</span>
+
+{% else %}
+
+<span class="status denied-badge">
+🔴 Access Denied
+</span>
+
+{% endif %}
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+
+<script>
+
+const ctx = document.getElementById('scanChart');
+
+new Chart(ctx, {
+
+type: 'doughnut',
+
+data: {
+
+labels: ['Allowed','Denied'],
+
+datasets: [{
+
+data: [{{allowed}},{{denied}}],
+
+backgroundColor:['#22c55e','#ef4444']
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+maintainAspectRatio:false,
+
+plugins:{
+legend:{
+position:'top'
+}
+}
+
+}
+
+});
+
+</script>
+
+
+<script>
+
+/* Auto Refresh Dashboard */
+
+setInterval(function(){
+location.reload();
+},3000);
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Entry Logs</h1>
+
+<table>
+
+<tr>
+<th>Ticket</th>
+<th>Type</th>
+<th>Status</th>
+<th>Time</th>
+</tr>
+
+{% for log in logs %}
+<tr>
+
+<td>{{log[0]}}</td>
+<td>{{log[1]}}</td>
+
+<td>
+{% if log[2]=='allowed' %}
+<span class="allowed">allowed</span>
+{% else %}
+<span class="denied">denied</span>
+{% endif %}
+</td>
+
+<td>{{log[3]}}</td>
+
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}

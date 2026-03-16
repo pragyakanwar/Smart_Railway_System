@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Generate Ticket</h1>
+
+<div class="table-card">
+
+<form method="POST">
+
+<label>Ticket ID</label><br>
+<input type="text" name="ticket_id" required><br><br>
+
+<label>Ticket Type</label><br>
+<select name="ticket_type">
+<option value="travel">Travel</option>
+<option value="platform">Platform</option>
+</select><br><br>
+
+<button type="submit">Generate Ticket</button>
+
+</form>
+
+</div>
+
+{% if qr %}
+
+<div class="chart-card">
+
+<h3>Generated QR Ticket</h3>
+
+<img src="/{{qr}}" style="width:250px;height:250px;">
+
+<p><b>Ticket ID:</b> {{ticket_id}}</p>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

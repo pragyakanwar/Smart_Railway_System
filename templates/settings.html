@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>System Settings</h1>
+
+<div class="cards">
+    <div class="card">
+        <h3>Station Name</h3>
+        <h2>Bikaner Junction</h2>
+    </div>
+
+    <div class="card">
+        <h3>Scanner Mode</h3>
+        <h2>QR Verification</h2>
+    </div>
+
+    <div class="card">
+        <h3>System Status</h3>
+        <h2 style="color:green;">Active</h2>
+    </div>
+</div>
+
+<div class="table-card">
+    <h3>Current Configuration</h3>
+    <table>
+        <tr>
+            <th>Setting</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Station</td>
+            <td>Bikaner Junction</td>
+        </tr>
+        <tr>
+            <td>Ticket Type Support</td>
+            <td>Travel + Platform</td>
+        </tr>
+        <tr>
+            <td>Duplicate Ticket Check</td>
+            <td>Enabled</td>
+        </tr>
+        <tr>
+            <td>Dashboard Refresh</td>
+            <td>5 seconds</td>
+        </tr>
+        <tr>
+            <td>Camera Feed</td>
+            <td>Active</td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}
