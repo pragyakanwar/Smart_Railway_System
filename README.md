@@ -96,21 +96,7 @@ python app.py
 
 ---
 
-## Project Screenshots
 
-### QR Ticket Verification
-
-(Add screenshot here)
-
-### Dashboard Interface
-
-(Add screenshot here)
-
-### Entry Log System
-
-(Add screenshot here)
-
----
 
 ## Author
 
